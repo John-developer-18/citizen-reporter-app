@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">Home page</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div  class="app-button" data-target="page2">View Posts</div>
+        </div>
+
+            <!-- <div class="d-flex justify-content-center pt-2" id="spinner">
+                <div class="spinner-border text-primary"></div>
+                </div> -->
+                <!-- <div class="container pt-2" id="mainDiv">
+
+                </div> -->
+       
+            <div class="container">
+                <h2>Submit a post</h2>
+                <form id="sheetdb-form" action="https://sheetdb.io/api/v1/qtm8symlc6c75" method="POST" class="was-validated">
+                  <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" placeholder="title of post" name="data[title]" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="content">Content:</label>
+                    <textarea name="data[content]" id="content" cols="30" rows="3" class="form-control"required></textarea>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                   <div class="form-group">
+                      <label for="author">Author: <input type="text" class="form-control"required id="author" placeholder="enter your name" name="data[author]"></label>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+
+                </div>
+            </div>
+      </div>
+    
+
+    <div class="app-page" data-page="page2">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">Create Post</div>
+      </div>
+      <div class="app-content">
+        <button onclick="location.reload()" type="submit" class="btn btn-success mt-4">View Post</button>
+        <div class="mt-4 "id="users"></div>
+      </div>
+        
+    </div>
+
+
+
+    
+    
+   
+   
+    <script src="js/jquery.js"></script>
+    <script src="js/app.min.js"></script>
+    <script src="./js/index3.js"></script>
+    <script>
+      var form = document.getElementById('sheetdb-form');
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  fetch(form.action, {
+      method : "POST",
+      body: new FormData(document.getElementById("sheetdb-form")),
+  }).then(
+      response => response.json()
+  ).then((html) => {
+    // you can put any JS code here
+    alert('success')
+    console.log('succss')
+  });
+});
+    </script>
+    <script src="./js/index.js"></script>
+
+
+
+
+  </body>
+</html>
+
+
+
+
